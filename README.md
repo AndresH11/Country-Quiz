@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Please update value in the {}  -->
 
 <h1 align="center">{Your project name}</h1>
@@ -90,3 +91,6 @@ $ npm start
 - Website [your-website.com](https://{your-web-site-link})
 - GitHub [@your-username](https://{github.com/your-usermame})
 - Twitter [@your-twitter](https://{twitter.com/your-username})
+=======
+# challenger-quiz
+>>>>>>> ff14cfb9a9a2dea84f344a9efdaff29788120a98
