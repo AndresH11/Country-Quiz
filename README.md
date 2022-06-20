@@ -9,11 +9,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://andresh11.github.io/Country-Quiz/}">
+    <a href="https://andresh11.github.io/Country-Quiz/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://andresh11.github.io/Country-Quiz/}">
+    <a href="https://github.com/AndresH11/Country-Quiz/">
       Solution
     </a>
     <span> | </span>
@@ -38,11 +38,11 @@
 
 ## Overview
 
-![screenshot](./src/image/Country-Quiz)
+![screenshot](./src/image/Country-Quiz.png)
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
-- Where can I see your demo?
+- Puenden encontrar el demo en el siguiente link https://andresh11.github.io/Country-Quiz/
 - Fue una experiencia muy bonita, se me presentaron varios problemas al momento de crear esta app, principalmente porque no sabia utilizar algunas funciones de react.js pero al final logré darle solucion al challenge.
 - Aprendí a utilizar react.js, sus hooks, su mecanica, su filosofía y muchas mas cosas-
 - Puedo decir que he avanzado mucho en esta tecnología y me siento preparado para los siguientes retos que se me prensenten ahora en adelante :)
