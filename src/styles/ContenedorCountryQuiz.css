@@ -1,18 +1,7 @@
-.App{
-    width: 100%;
-    min-height: 100vh;
-    background-image: url('./image/background.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .contenedor__countryQuiz{
     width: 364px;
     min-height: 429px;
+    margin-top: 50px;
 }
 
 .titulo__countryQuiz{
@@ -39,7 +28,7 @@
     width: 142px;
     height: 96px;
     border-bottom: 1px solid black;
-    background-image: url('./image/undraw_adventure_4hum1.svg');
+    background-image: url('../image/undraw_adventure_4hum1.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

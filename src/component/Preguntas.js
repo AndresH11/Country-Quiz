@@ -1,5 +1,5 @@
 import React from "react";
-import "./Preguntas.css";
+import "../styles/Preguntas.css";
 
 const Preguntas = ({ pregunta,linkSrc }) => {
 

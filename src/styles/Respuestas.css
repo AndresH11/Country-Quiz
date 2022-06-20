@@ -1,0 +1,28 @@
+.TextoOpciones {
+  margin-left: 20px;
+  font-size: 24px;
+  color: rgba(96, 102, 208, 0.8);
+}
+
+.TextoRespuesta {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: rgba(96, 102, 208, 0.8);
+}
+
+.colorWhite{
+  color: #fff;
+}
+/*---------CORRECTO E INCORRECTO---------*/
+
+.contenedor__respuestas .icono-correctoIncorrecto {
+  font-size: 25px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}

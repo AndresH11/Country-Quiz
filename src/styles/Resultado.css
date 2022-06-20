@@ -1,0 +1,48 @@
+.icono__resultado {
+  width: 238px;
+  height: 128.58px;
+  margin-top: 50px;
+  background-image: url("../image/undraw_winners_ao2o2.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.texto__resultado{
+  margin-top: 72px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #1D355D;
+}
+
+.puntuacion__resultado{
+  margin: 10px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1D355D;
+}
+
+.puntuacion__resultado b{
+  font-size: 30px;
+  color: rgb(81, 226, 81);
+}
+
+.button__Resultato{
+  margin-top: 71px;
+  width: 209px;
+  height: 62px;
+  background: #FFFFFF;
+  border: 2px solid #1D355D;
+  filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+  border-radius: 12px;
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1D355D;
+  cursor: pointer;
+}
