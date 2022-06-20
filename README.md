@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">{Country Quiz}</h1>
 
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
@@ -9,11 +9,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://andresh11.github.io/Country-Quiz/}">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://andresh11.github.io/Country-Quiz/}">
       Solution
     </a>
     <span> | </span>
@@ -38,14 +38,14 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./src/image/Country-Quiz)
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 - Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+- Fue una experiencia muy bonita, se me presentaron varios problemas al momento de crear esta app, principalmente porque no sabia utilizar algunas funciones de react.js pero al final logré darle solucion al challenge.
+- Aprendí a utilizar react.js, sus hooks, su mecanica, su filosofía y muchas mas cosas-
+- Puedo decir que he avanzado mucho en esta tecnología y me siento preparado para los siguientes retos que se me prensenten ahora en adelante :)
 
 ### Built With
 
@@ -78,19 +78,11 @@ $ npm install
 $ npm start
 ```
 
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
-- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- Portafolio [Behance](https://www.behance.net/andrshernndez14)
+- GitHub [@AndresH11](https://{github.com/AndresH11})
+- Likedin [@Andrés_Hernández_Aldana](www.linkedin.com/in/andrés-hernández-aldana-a8b008149)
 =======
 # challenger-quiz
 >>>>>>> ff14cfb9a9a2dea84f344a9efdaff29788120a98
