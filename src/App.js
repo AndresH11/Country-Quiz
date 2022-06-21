@@ -65,7 +65,9 @@ function App() {
 
     elemento = document.getElementById(id); //OBTENEMOS EL CONTENEDOR QUE FUE SELECCIONADO POR EL USUARIO
 
-    if(respuestaJugador == preRe.respuestaCorrecta){
+    console.log(preRe.respuestaCorrecta);
+    console.log(respuestaJugador[0]);
+    if(respuestaJugador[0] === preRe.respuestaCorrecta){
 
       elemento.classList.add('contenedor__respuestas-correcto'); //AÑADIMOS LA CLASE EN CASO DE CUMPLIRSE LA CONDICIÓN
       elemento.children[2].classList.add('bx-check-circle'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
@@ -102,7 +104,7 @@ function App() {
 
       arrayOpciones.forEach((opcion)=>{ //RECORREMOS TODAS LAS OPCIONES
 
-        if(opcion.children[1].outerText == preRe.respuestaCorrecta){ //BUSCAMOS LA OOPCION CORRECTA
+        if(opcion.children[1].outerText === preRe.respuestaCorrecta){ //BUSCAMOS LA OOPCION CORRECTA
 
           opcion.classList.add('contenedor__respuestas-correcto'); //AGREEGAMOS LA CLASE A LA OPCION CORRECTA
 
