@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import { Quiz } from "./component/Quiz";
 import Resultado from './component/Resultado';
@@ -65,9 +65,7 @@ function App() {
 
     elemento = document.getElementById(id); //OBTENEMOS EL CONTENEDOR QUE FUE SELECCIONADO POR EL USUARIO
 
-    console.log(preRe.respuestaCorrecta);
-    console.log(respuestaJugador[0]);
-    if(respuestaJugador[0] === preRe.respuestaCorrecta){
+    if(respuestaJugador == preRe.respuestaCorrecta){
 
       elemento.classList.add('contenedor__respuestas-correcto'); //AÑADIMOS LA CLASE EN CASO DE CUMPLIRSE LA CONDICIÓN
       elemento.children[2].classList.add('bx-check-circle'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
@@ -104,7 +102,7 @@ function App() {
 
       arrayOpciones.forEach((opcion)=>{ //RECORREMOS TODAS LAS OPCIONES
 
-        if(opcion.children[1].outerText === preRe.respuestaCorrecta){ //BUSCAMOS LA OOPCION CORRECTA
+        if(opcion.children[1].outerText == preRe.respuestaCorrecta){ //BUSCAMOS LA OOPCION CORRECTA
 
           opcion.classList.add('contenedor__respuestas-correcto'); //AGREEGAMOS LA CLASE A LA OPCION CORRECTA
 
