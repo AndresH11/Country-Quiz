@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./styles/App.css";
-import { Quiz } from "./component/Quiz";
-import Resultado from './component/Resultado';
+import { Quiz } from "./components/Quiz";
+import Resultado from './components/Resultado';
+import PreguntasYRespuestas from './components/PreguntasYRespuestas';
+import Header from "./components/Header";
 import ContenedorCountryQuiz from "./containers/ContenedorCountryQuiz";
-import PreguntasYRespuestas from './component/PreguntasYRespuestas';
-import Header from "./component/Header";
+import { useDispatch, useSelector } from 'react-redux';
+import { totalScore, restarScore } from './features/quizSlice/quizSlice';
 
 function App() {
   //OBTENEMOS LAS PREGUNTAS Y RESPUESTAS DEL QUIZ
-  // preRe = preguntas y respuetas
-  const [preRe, setPreRe] = useState(''); //ESTADO PARA COMPLEMENTARLO CON EL useEffect
+  const quizState = useSelector(state=> state.quizCountry);
+  const dispatch = useDispatch();
   const [next, setNext] = useState(false); //ESTADO PARA EL ButtonNext
   const [view, setView] = useState(true); //CON ESTA VARIABLE VAMOS A SABER QUE VISTA MOSTRAR AL USURAIO, SI MOSTRAMOS EL QUIZ O EL RESULTADO OBTENIDO, EL ESTADO DE CAMBIA EN LA FUNCION validacionRespuestas
-  let [puntaje, setPuntaje] = useState(0); //ESTADO PARA ACTUALIZAR EL PUNTAJE DEL USUARIO LO ACTUALIZAMOS EN LA FUNCION nextQuestion
 
   useEffect(() => { //HACEMOS EL LLAMADO A LA API Y OBTENEMOS SUS DATOS CADA VEZ QUE SE EJECUTE ESTE HOOK
-    Quiz(setPreRe);
+    Quiz(dispatch,quizState);
   }, [next]);
 
   let elemento; /*VARIABLE PARA ALMACENAR UN ELEMENTO DEL DOM CUYA FUNCION SERA AGREGAR
@@ -49,9 +50,7 @@ function App() {
       }
 
       //AUMENTAMOS EL PUNTAJE DEL USUARIO EN CASO DE RESPONDER CORRECTAMENTE
-      setPuntaje(()=>{
-        return puntaje++;
-      });
+      dispatch(totalScore());
 
       setNext(!next);
 
@@ -65,7 +64,9 @@ function App() {
 
     elemento = document.getElementById(id); //OBTENEMOS EL CONTENEDOR QUE FUE SELECCIONADO POR EL USUARIO
 
-    if(respuestaJugador == preRe.respuestaCorrecta){
+    console.log(respuestaJugador,'j');
+    console.log(quizState.response,'r');
+    if(respuestaJugador == quizState.response){
 
       elemento.classList.add('contenedor__respuestas-correcto'); //AÑADIMOS LA CLASE EN CASO DE CUMPLIRSE LA CONDICIÓN
       elemento.children[2].classList.add('bx-check-circle'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
@@ -102,7 +103,7 @@ function App() {
 
       arrayOpciones.forEach((opcion)=>{ //RECORREMOS TODAS LAS OPCIONES
 
-        if(opcion.children[1].outerText == preRe.respuestaCorrecta){ //BUSCAMOS LA OOPCION CORRECTA
+        if(opcion.children[1].outerText == quizState.response){ //BUSCAMOS LA OOPCION CORRECTA
 
           opcion.classList.add('contenedor__respuestas-correcto'); //AGREEGAMOS LA CLASE A LA OPCION CORRECTA
 
@@ -116,7 +117,7 @@ function App() {
       //CAMBIAMOS LA VISTA DEL USUARIO PARA EL RESULTADO CON UNA ESPERA DE 3s
       setTimeout(() => {
         setView(!view); //CAMBIAMOS LA VISTA
-        Quiz(setPreRe); // CAMBIAMOS LA PREGUNTA
+        Quiz(dispatch, quizState); // CAMBIAMOS LA PREGUNTA
       }, 3000);
 
     };
@@ -128,13 +129,13 @@ function App() {
 
     setView(!view); //CAMBIAMOS LA VISTA DEL JUGADOR PARA EL QUIZ
 
-    setPuntaje(0); //RESTABLECEMOS EL PUNTAJE DEL JUGADOR PARA UN NUEVO JUEGO
+    dispatch(restarScore(0)); //RESTABLECEMOS EL PUNTAJE DEL JUGADOR PARA UN NUEVO JUEGO
   }
 
   return (
     <div className="App">
       <ContenedorCountryQuiz>
-        { view ? <PreguntasYRespuestas preRe = { preRe } validacionRespuesta = { validacionRespuesta } nextQuestion = { nextQuestion } /> : <Resultado puntuacion = { puntaje } restaurarJuego = { tryAgain } /> }
+        { view ? <PreguntasYRespuestas validacionRespuesta = { validacionRespuesta } nextQuestion = { nextQuestion } /> : <Resultado restaurarJuego = { tryAgain } /> }
       </ContenedorCountryQuiz>
       <Header />
     </div>
