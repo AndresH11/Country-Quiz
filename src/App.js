@@ -10,13 +10,13 @@ import { totalScore, restarScore } from './features/quizSlice/quizSlice';
 
 function App() {
   //OBTENEMOS LAS PREGUNTAS Y RESPUESTAS DEL QUIZ
-  const quizState = useSelector(state=> state.quizCountry);
+  const quizState = useSelector(state => state.quizCountry);
   const dispatch = useDispatch();
   const [next, setNext] = useState(false); //ESTADO PARA EL ButtonNext
   const [view, setView] = useState(true); //CON ESTA VARIABLE VAMOS A SABER QUE VISTA MOSTRAR AL USURAIO, SI MOSTRAMOS EL QUIZ O EL RESULTADO OBTENIDO, EL ESTADO DE CAMBIA EN LA FUNCION validacionRespuestas
 
   useEffect(() => { //HACEMOS EL LLAMADO A LA API Y OBTENEMOS SUS DATOS CADA VEZ QUE SE EJECUTE ESTE HOOK
-    Quiz(dispatch,quizState);
+    Quiz(dispatch, quizState);
   }, [next]);
 
   let elemento; /*VARIABLE PARA ALMACENAR UN ELEMENTO DEL DOM CUYA FUNCION SERA AGREGAR
@@ -33,11 +33,11 @@ function App() {
   let arrayOpciones = [];
   //******************************************/
   let bandera; //CON ESTA VARIABLE SABREMOS CUALES SON LAS CLASES QUE HAY QUE ELIMINAR,LA USAMOS EN LA FUNCION validacionRespuesta y nextQuestion
-  
+
   // FUNCION PARA CAMBIAR A LA SIGUIENTE PREGUNTA
   const nextQuestion = () => {
 
-    if(bandera){
+    if (bandera) {
       //ELIMINAMOS TODAS LAS CALSES AÑADIDAS A LOS ELEMENTOS UNA VEZ HAYA PRESIONADO EL BOTON Next;
 
       elemento.classList.remove('contenedor__respuestas-correcto');
@@ -45,48 +45,49 @@ function App() {
       elemento.children[2].classList.remove('icono-correctoIncorrecto');
 
       //ELIMONAMOS LOS ESTILOS PARA LAS LETRAS COLOR BLANCO
-      for(let i = 0; i<2; i++){
+      for (let i = 0; i < 2; i++) {
         elemento.children[i].classList.remove('colorWhite');
       }
 
       //AUMENTAMOS EL PUNTAJE DEL USUARIO EN CASO DE RESPONDER CORRECTAMENTE
-      dispatch(totalScore());
+      dispatch(totalScore({
+        ...quizState,
+        score: quizState.score + 1
+      }));
 
       setNext(!next);
 
     };
   };
 
-    //FUNCION PARA VALIDAR LA RESPUESTA
+  //FUNCION PARA VALIDAR LA RESPUESTA
   const validacionRespuesta = (children, id) => {
-    
+
     const respuestaJugador = children.props.respuesta; //OBTENEMOS LA RESPUESTA QUE EL USUARIO ELIGÍO
 
     elemento = document.getElementById(id); //OBTENEMOS EL CONTENEDOR QUE FUE SELECCIONADO POR EL USUARIO
 
-    console.log(respuestaJugador,'j');
-    console.log(quizState.response,'r');
-    if(respuestaJugador == quizState.response){
+    if (respuestaJugador == quizState.response) {
 
       elemento.classList.add('contenedor__respuestas-correcto'); //AÑADIMOS LA CLASE EN CASO DE CUMPLIRSE LA CONDICIÓN
       elemento.children[2].classList.add('bx-check-circle'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
       elemento.children[2].classList.add('icono-correctoIncorrecto'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
 
       //AÑADIMOS ESTILOS PARA LAS LETRAS COLOR BLANCO
-      for(let i = 0; i<2; i++){
+      for (let i = 0; i < 2; i++) {
         elemento.children[i].classList.add('colorWhite');
       }
 
       bandera = true; //SERVIRA PARA LUEGO SABER QUE CLASES ELIMINAR EN LA FUNCION nextQuestion
 
-    }else{
+    } else {
 
       elemento.classList.add('contenedor__respuestas-incorrecto'); //AÑADIMOS LA CLASE EN CASO DE NO CUMPLIRSE LA CONDICIÓN
       elemento.children[2].classList.add('bx-x-circle'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
       elemento.children[2].classList.add('icono-correctoIncorrecto'); //LE AÑADIMOS CLASE AL HIJO i QUE ES UN ICONO
 
       //AÑADIMOS ESTILOS PARA LAS LETRAS COLOR BLANCO
-      for(let i = 0; i<2; i++){
+      for (let i = 0; i < 2; i++) {
         elemento.children[i].classList.add('colorWhite');
       }
 
@@ -97,18 +98,18 @@ function App() {
       opcionId3 = document.getElementById('3');
       opcionId4 = document.getElementById('4');
 
-      arrayOpciones = [opcionId1,opcionId2,opcionId3,opcionId4]; //ARRAY DE CONTENEDOR DE RESPUESTAS
+      arrayOpciones = [opcionId1, opcionId2, opcionId3, opcionId4]; //ARRAY DE CONTENEDOR DE RESPUESTAS
 
       //COMPARAMOS LAS OPCIONES
 
-      arrayOpciones.forEach((opcion)=>{ //RECORREMOS TODAS LAS OPCIONES
+      arrayOpciones.forEach((opcion) => { //RECORREMOS TODAS LAS OPCIONES
 
-        if(opcion.children[1].outerText == quizState.response){ //BUSCAMOS LA OOPCION CORRECTA
+        if (opcion.children[1].outerText == quizState.response) { //BUSCAMOS LA OOPCION CORRECTA
 
           opcion.classList.add('contenedor__respuestas-correcto'); //AGREEGAMOS LA CLASE A LA OPCION CORRECTA
 
           //AÑADIMOS ESTILOS PARA LAS LETRAS COLOR BLANCO
-          for(let i = 0; i<2; i++){
+          for (let i = 0; i < 2; i++) {
             opcion.children[i].classList.add('colorWhite');
           };
         };
@@ -125,17 +126,20 @@ function App() {
 
   //FUNCION PARA REANUDAR EL JUEGO
 
-  const tryAgain = ()=> {
+  const tryAgain = () => {
 
     setView(!view); //CAMBIAMOS LA VISTA DEL JUGADOR PARA EL QUIZ
 
-    dispatch(restarScore(0)); //RESTABLECEMOS EL PUNTAJE DEL JUGADOR PARA UN NUEVO JUEGO
+    dispatch(restarScore({
+      ...quizState,
+      score: 0
+    })); //RESTABLECEMOS EL PUNTAJE DEL JUGADOR PARA UN NUEVO JUEGO
   }
 
   return (
     <div className="App">
       <ContenedorCountryQuiz>
-        { view ? <PreguntasYRespuestas validacionRespuesta = { validacionRespuesta } nextQuestion = { nextQuestion } /> : <Resultado restaurarJuego = { tryAgain } /> }
+        {view ? <PreguntasYRespuestas validacionRespuesta={validacionRespuesta} nextQuestion={nextQuestion} /> : <Resultado restaurarJuego={tryAgain} />}
       </ContenedorCountryQuiz>
       <Header />
     </div>

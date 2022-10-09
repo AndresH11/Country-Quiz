@@ -57,8 +57,6 @@ export const Quiz = async (dispatch, state) => {
 
     const indicePregunta = countryRamdom(0, 3); //INDICE RANDOM
 
-    console.log(preguntasYRespuestas[indicePregunta]);
-
     //Cambiamos el estado de questionResponse
     dispatch(questionResponse({
       ...state,
@@ -67,7 +65,7 @@ export const Quiz = async (dispatch, state) => {
       response: preguntasYRespuestas[indicePregunta].respuestaCorrecta,
       flag: preguntasYRespuestas[indicePregunta].flag,
     }));
-    
+
   } catch (error) {
     console.log(error);
   }

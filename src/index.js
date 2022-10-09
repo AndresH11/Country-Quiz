@@ -10,7 +10,7 @@ createRoot(
   document.getElementById('root')
 ).render(
   <React.StrictMode>
-    <Provider store={ storage }>
+    <Provider store={storage}>
       <App />
     </Provider>
   </React.StrictMode>

@@ -3,29 +3,23 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   question: '',
   optiones: [],
-  response : '',
+  response: '',
   flag: '',
   score: 0,
 };
 
 export const quizSlice = createSlice({
-  name : 'quizCountry',
+  name: 'quizCountry',
   initialState,
-  reducers : {
-    questionResponse: (state,action)=>{
+  reducers: {
+    questionResponse: (state, action) => {
       return action.payload;
     },
-    totalScore: (state,action)=>{
-      return void{
-        ...state,
-        score : state.score++
-      };
+    totalScore: (state, action) => {
+      return action.payload;
     },
-    restarScore: (state,action)=>{
-      return {
-        ...state,
-        score: action.payload
-      }
+    restarScore: (state, action) => {
+      return action.payload;
     }
   }
 });
